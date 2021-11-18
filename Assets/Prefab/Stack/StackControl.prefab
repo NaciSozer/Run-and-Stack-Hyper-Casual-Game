@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1648135045680820355
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1648135045680820353}
+  - component: {fileID: 1648135045680820354}
+  m_Layer: 0
+  m_Name: StackControl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1648135045680820353
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1648135045680820355}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.023741, y: 3.780745, z: 2.3846624}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1648135045680820354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1648135045680820355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec918c77819f0b845bfa61d87bf3f25e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _timberPrefabList: []
+  _timberPrefab: {fileID: 6632463018779271141, guid: b039fbbf36f88404ba12e4d55e59c4b5, type: 3}
+  _timberParent: {fileID: 0}
+  _distanceBetweenObjects: 0.08
+  _ladderPrefab: {fileID: 6773672364342063890, guid: 4b08ebe6400f5d1499b1b06856e1d174, type: 3}
+  _ladderCreatPos: {fileID: 0}
+  preNum: 0
