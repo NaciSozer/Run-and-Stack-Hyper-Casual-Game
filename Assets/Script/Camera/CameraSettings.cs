@@ -16,13 +16,13 @@ namespace RunGame.Camera
         public Vector3 PositionOffset
         {
             get { return _positionOffset; }
+            set { _positionOffset = value; }
         }
 
         [SerializeField] private float _positionLerpSpeed;
         public float PositionLerpSpeed
         {
-            get
-            { return _positionLerpSpeed; }
+            get { return _positionLerpSpeed; }
         }
 
     }

@@ -11,13 +11,19 @@ namespace RunGame.Camera
         [SerializeField] private Transform _targetTransform;
         [SerializeField] private Transform _cameraTransform;
 
-        
+        private void Start()
+        {
+            
+
+            _cameraSettings.PositionOffset = _cameraTransform.position - _targetTransform.position;
+        }
+
         void Update()
         {
             CameraPositionFollow();
         }
 
-        private void CameraPositionFollow()
+        private void CameraPositionLerpFollow()
         {
             _cameraTransform.position = Vector3.Lerp(
                 _cameraTransform.position,
@@ -25,6 +31,11 @@ namespace RunGame.Camera
                 Time.deltaTime * _cameraSettings.PositionLerpSpeed
                 );
 
+        }
+
+        private void CameraPositionFollow()
+        {
+            _cameraTransform.position = _targetTransform.position + _cameraSettings.PositionOffset;
         }
 
     }

@@ -68,7 +68,7 @@ namespace RunGame.LevelControl
 
         private void Awake()
         {
-            //PlayerPrefs.DeleteAll();
+            PlayerPrefs.DeleteAll();
 
             current = this;
 
