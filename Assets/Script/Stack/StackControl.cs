@@ -98,10 +98,10 @@ namespace RunGame.Stack
 
                         Destroy(TimberParent.GetComponent<Transform>().GetChild(TimberPrefab.Count).gameObject);
 
-                    TimberParent.transform.localPosition = new Vector3(
-                        TimberParent.transform.localPosition.x,
-                        TimberParent.transform.localPosition.y - DistanceBetweenObects,
-                        TimberParent.transform.localPosition.z);
+                    //TimberParent.transform.localPosition = new Vector3(
+                    //    TimberParent.transform.localPosition.x,
+                    //    TimberParent.transform.localPosition.y - DistanceBetweenObects,
+                    //    TimberParent.transform.localPosition.z);
 
                     break;
                     }

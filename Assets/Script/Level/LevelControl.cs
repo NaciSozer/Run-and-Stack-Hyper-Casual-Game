@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-namespace RunGame.LevelControl
-{
 
+namespace RunGame.LevelController
+{
     public class LevelControl : MonoBehaviour
     {
         public static LevelControl current;
@@ -64,11 +64,18 @@ namespace RunGame.LevelControl
             set { _nextLevelText = value; }
         }
 
-
+        [Header("Win Panel")]
+        [SerializeField] private GameObject _winPanel;
+        public GameObject WinPanel
+        {
+            get { return _winPanel; }
+        }
 
         private void Awake()
         {
             PlayerPrefs.DeleteAll();
+            Time.timeScale = 1;
+
 
             current = this;
 
@@ -106,10 +113,9 @@ namespace RunGame.LevelControl
 
             if (SliderValue.value >= 0.94f)
             {
+                Time.timeScale = 0;
                 FinishLevel();
-                LoadLevel();
-
-
+                WinPanel.SetActive(true);
             }
 
         }
@@ -119,8 +125,9 @@ namespace RunGame.LevelControl
             PlayerPrefs.SetInt("currentLevel", CurrentLevel + 1);
         }
 
-        public void LoadLevel()
+        public void LoadNextLevel()
         {
+            
             if (CurrentLevel == 2)
             {
                 SceneManager.LoadScene("Finish");
