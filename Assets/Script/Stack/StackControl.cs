@@ -20,14 +20,22 @@ namespace RunGame.Stack
 
         }
 
-        [SerializeField] private GameObject _timberParent;
-        public GameObject TimberParent
+        [SerializeField] private Transform _timberObject;
+        public Transform TimberObject
+        {
+            get { return _timberObject; }
+            set { _timberObject = value; }
+        }
+
+
+        [SerializeField] private Transform _timberParent;
+        public Transform TimberParent
         {
             get { return _timberParent; }
             set { _timberParent = value; }
         }
 
-        [SerializeField] private float _distanceBetweenObjects = 0.08f;
+        [SerializeField] private float _distanceBetweenObjects = 0.8f;
         public float DistanceBetweenObects
         {
             get { return _distanceBetweenObjects;}
@@ -70,13 +78,14 @@ namespace RunGame.Stack
             _timberPrefab.transform.parent = TimberParent.transform;
 
 
-            Vector3 despos = TimberParent.transform.localPosition;
+            Vector3 despos = TimberObject.localPosition;
 
             despos.y += down ? DistanceBetweenObects : -DistanceBetweenObects;
 
             _timberPrefab.transform.localPosition = despos;
 
-            TimberParent.transform.localPosition = _timberPrefab.transform.localPosition;
+
+            TimberObject = _timberPrefab.transform;
 
         }
 
@@ -98,11 +107,7 @@ namespace RunGame.Stack
 
                         Destroy(TimberParent.GetComponent<Transform>().GetChild(TimberPrefab.Count).gameObject);
 
-                    //TimberParent.transform.localPosition = new Vector3(
-                    //    TimberParent.transform.localPosition.x,
-                    //    TimberParent.transform.localPosition.y - DistanceBetweenObects,
-                    //    TimberParent.transform.localPosition.z);
-
+                   
                     break;
                     }
                     

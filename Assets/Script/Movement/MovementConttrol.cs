@@ -8,26 +8,37 @@ namespace RunGame.Movement
     [RequireComponent(typeof(Animator), typeof(Rigidbody))]
     public class MovementConttrol : MonoBehaviour
     {
+        [Header("Call Class")]
         [SerializeField] MovementSettings _movementSettings;
         [SerializeField] StackControl _stackControl = new StackControl();
 
+        [Header("Character Rigidbody")]
         [SerializeField] Rigidbody _rigidBody;
+
+        [Header("Character Animator")]
         [SerializeField] Animator _playerAnim;
+
+        [Header("Ground Control")]
         [SerializeField] private bool _groundControl;
         public bool GroundControl
         {
             get { return _groundControl; }
             set { _groundControl = value; }
         }
-
-       
-        /// <summary>
-        /// Animasyon Control
-        /// </summary>
-        bool _transportAnim;
-
         [Header("Ladders Control")]
         public bool _creatLadders;
+
+        [Header("Animasyon Control")]
+        [SerializeField] private bool _transportAnim;
+         public bool TransportAnim
+        {
+            get { return _transportAnim; }
+            set { _transportAnim = value; }
+        }
+
+        [Header("New Timber Transform")]
+        [SerializeField] Transform _timberObject;
+
 
         private void Start()
         {
@@ -40,7 +51,7 @@ namespace RunGame.Movement
             
             if (_stackControl.TimberNumb == 0)
             {
-                _transportAnim = false;
+                TransportAnim = false;
 
                 _playerAnim.SetBool("Transport", false);
 
@@ -55,6 +66,11 @@ namespace RunGame.Movement
             {
                 _rigidBody.useGravity = true;
             }
+
+            if (_stackControl.TimberObject == null)
+            {
+                _stackControl.TimberObject = _timberObject;
+            }
         }
 
 
@@ -62,7 +78,7 @@ namespace RunGame.Movement
         {
             
             GroundControl = true;
-            Debug.Log(collision.gameObject.name);
+            //Debug.Log(collision.gameObject.name);
         }
 
         private void OnCollisionExit(Collision collision)
@@ -79,7 +95,7 @@ namespace RunGame.Movement
 
             _playerAnim.SetBool("Transport", true);
 
-            _stackControl.TimperUp(other.gameObject,true);
+            _stackControl.TimperUp(other.gameObject, true);
 
             _stackControl.TimberNumb++;
 
@@ -112,7 +128,7 @@ namespace RunGame.Movement
             if (_stackControl.TimberNumb == 0 && _creatLadders == false || GroundControl == false)
             {
                 _rigidBody.AddForce(Vector3.up * _movementSettings.JumpPower);
-                if (!_transportAnim)
+                if (!TransportAnim)
                 {
                     _playerAnim.SetTrigger("Jump");
                 }
