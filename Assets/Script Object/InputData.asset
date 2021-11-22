@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 028d3e53e31cf59489ce48662eb549d2, type: 3}
   m_Name: InputData
   m_EditorClassIdentifier: 
+  _horizontalInput: 0
   _mouseX: 0
-  _mouseSensitivity: 200
+  _mouseSensitivity: 5

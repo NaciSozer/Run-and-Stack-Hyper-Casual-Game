@@ -19,13 +19,35 @@ namespace RunGame.InputControl
 
         public void MouseControl()
         {
-            if (Input.GetMouseButton(0))
-            {
-                _inputData.MouseX = Input.GetAxis("Mouse X") * _inputData.MouseSensitivity * Time.deltaTime;
+            _inputData.HorizontlInput = Input.GetAxisRaw("Horizontal");
+            
 
-                _movementControl.gameObject.transform.Rotate(Vector3.up * _inputData.MouseX);
+            if (Input.anyKey)
+            {
+                if(Input.mousePosition.x < Screen.width / 2 || transform.position.x > 5.8f)
+                {
+                    transform.Translate(Vector3.left * _inputData.MouseSensitivity * Time.deltaTime);
+
+                }
+
+                if (Input.mousePosition.x > Screen.width / 2 || transform.position.x < -5.8f)
+                {
+
+                    transform.Translate(Vector3.right * _inputData.MouseSensitivity * Time.deltaTime);
+
+                }
 
             }
+
+
+
+            //if (Input.GetMouseButton(0))
+            //{
+            //    _inputData.MouseX = Input.GetAxis("Mouse X") * _inputData.MouseSensitivity * Time.deltaTime;
+
+            //    _movementControl.gameObject.transform.Rotate(Vector3.up * _inputData.MouseX);
+
+            //}
         }
 
 

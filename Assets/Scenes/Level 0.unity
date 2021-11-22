@@ -1549,6 +1549,10 @@ PrefabInstance:
       propertyPath: _stackControl
       value: 
       objectReference: {fileID: 499083345}
+    - target: {fileID: 8401573177172138071, guid: 9e21f3b3d1a49d449bb638093c7343ac, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9a524802d837f074984b9b8041181219, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e21f3b3d1a49d449bb638093c7343ac, type: 3}
 --- !u!1001 &6134211427941062486

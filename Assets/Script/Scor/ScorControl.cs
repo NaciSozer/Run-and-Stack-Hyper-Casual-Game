@@ -20,7 +20,7 @@ namespace RunGame.Scor
         {
             _scorText.text = "Scor: " + _sctakControl.TimberNumb.ToString();
             _panelScor.text = _scorText.text;
-            _finishLevelText.text = "LEVEL " + _levelControl.CurrentLevel + " COMPLETED";
+            _finishLevelText.text = "LEVEL " + (_levelControl.CurrentLevel + 1) + " COMPLETED";
 
             Debug.Log(_levelControl.CurrentLevel);
         }

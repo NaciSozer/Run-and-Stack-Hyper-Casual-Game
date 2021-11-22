@@ -44,8 +44,6 @@ namespace RunGame.Movement
 
                 _playerAnim.SetBool("Transport", false);
 
-                _playerAnim.SetBool("Run", true);
-
                 _creatLadders = false;
             }
 
@@ -92,8 +90,18 @@ namespace RunGame.Movement
         /// </summary>
         void MovementRun()
         {
-            //_rigidBody.velocity = (Vector3.forward * _movementSettings.PlayerSpeed * Time.deltaTime);
-            transform.Translate(Vector3.forward * _movementSettings.PlayerSpeed * Time.deltaTime);
+            if (Input.GetMouseButton(0))
+            {//_rigidBody.velocity = (Vector3.forward * _movementSettings.PlayerSpeed * Time.deltaTime);
+                transform.Translate(Vector3.forward * _movementSettings.PlayerSpeed * Time.deltaTime);
+                _playerAnim.SetBool("Run", true);
+            }
+            else
+            {
+                _playerAnim.SetBool("Run", false);
+            }
+
+
+            
         }
         /// <summary>
         /// Player jump
