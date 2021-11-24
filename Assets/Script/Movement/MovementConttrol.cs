@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using RunGame.Stack;
+using RunGame.Obstacle;
 using UnityEngine;
 
 namespace RunGame.Movement
@@ -11,6 +12,7 @@ namespace RunGame.Movement
         [Header("Call Class")]
         [SerializeField] MovementSettings _movementSettings;
         [SerializeField] StackControl _stackControl = new StackControl();
+        ObstacleMechanical _obstacleMechanial = new ObstacleMechanical();
 
         [Header("Character Rigidbody")]
         [SerializeField] Rigidbody _rigidBody;
@@ -71,6 +73,8 @@ namespace RunGame.Movement
             {
                 _stackControl.TimberObject = _timberObject;
             }
+            
+            
         }
 
 
@@ -92,15 +96,21 @@ namespace RunGame.Movement
         /// </summary>
         private void OnTriggerEnter(Collider other)
         {
+            if (other.gameObject.CompareTag("Untagged"))
+            {
+                _playerAnim.SetBool("Transport", true);
+                _stackControl.TimperUp(other.gameObject, true);
+                
+            }
 
-            _playerAnim.SetBool("Transport", true);
-
-            _stackControl.TimperUp(other.gameObject, true);
-
-            _stackControl.TimberNumb++;
-
-
+            if (other.gameObject.CompareTag("Obstacle"))
+            {
+                Debug.Log("Engel");
+                //_stackControl.CreatAndDeleteTimber();
+            }
         }
+
+
         /// <summary>
         /// Player run
         /// </summary>

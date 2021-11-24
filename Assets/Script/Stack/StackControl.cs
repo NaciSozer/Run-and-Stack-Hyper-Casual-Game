@@ -1,18 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using RunGame.Obstacle;
 using UnityEngine;
 
 namespace RunGame.Stack
 {
-
-
     public class StackControl : MonoBehaviour
     {
-        
-
         [Header("Stack Data")]
         [SerializeField] private List<GameObject> _timberPrefabList = null;
         [SerializeField] private GameObject _timberPrefab;
+        ObstacleMechanical _obs = new ObstacleMechanical();
         public List<GameObject> TimberPrefab
         {
             get {return _timberPrefabList;}
@@ -69,12 +67,15 @@ namespace RunGame.Stack
             set { _timberNumb = value; }
         }
 
+       
+
 
         public void TimperUp(GameObject _timberPrefab, bool down = true)
         {
             
             TimberPrefab.Add(_timberPrefab);
-
+            _timberPrefab.GetComponent<BoxCollider>().enabled = false;
+            TimberNumb++;
             _timberPrefab.transform.parent = TimberParent.transform;
 
 
@@ -86,22 +87,25 @@ namespace RunGame.Stack
 
 
             TimberObject = _timberPrefab.transform;
-
+            
         }
 
-        public void CreatLadders()
+        public void CreatLadders(bool creat = true)
         {
                 if (0 < TimberNumb)
                 {
                     
                     for (int i = 0; i <= TimberNumb; i++)
                     {
-                    Quaternion desRot = LaddersCreatPos.transform.localRotation;
+                    if (creat)
+                    {
+                        Quaternion desRot = LaddersCreatPos.transform.localRotation;
 
-                    desRot = Quaternion.Euler(0, 90, 90);
+                        desRot = Quaternion.Euler(0, 90, 90);
 
-                    Instantiate(LaddersPrefab, _ladderCreatPos.position, desRot);
-
+                        Instantiate(LaddersPrefab, _ladderCreatPos.position, desRot);
+                    }
+                    
                     TimberNumb--;
                         TimberPrefab.RemoveAt(TimberPrefab.Count - 1);
 
@@ -119,6 +123,29 @@ namespace RunGame.Stack
                     CancelInvoke();
                 }
             
+        }
+
+
+        public void CreatAndDeleteTimber()
+        {
+            if (_obs.NewRandomProscess() > -1)
+            {
+                Debug.Log("Timber++ " + _obs.NewRandomProscess());
+                for (int i = 0; i <= _obs.NewRandomProscess(); i++)
+                {
+                    TimperUp(TimberObject.gameObject, true);
+                }
+
+            }
+            else if (_obs.NewRandomProscess() < 0)
+            {
+                Debug.Log("Timber--" + _obs.NewRandomProscess());
+                for (int i = 0; i <= _obs.NewRandomProscess(); i++)
+                {
+                    CreatLadders(false);
+                }
+
+            }
         }
     }
 }

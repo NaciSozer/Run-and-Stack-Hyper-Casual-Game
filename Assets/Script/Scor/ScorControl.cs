@@ -22,7 +22,7 @@ namespace RunGame.Scor
             _panelScor.text = _scorText.text;
             _finishLevelText.text = "LEVEL " + (_levelControl.CurrentLevel + 1) + " COMPLETED";
 
-            Debug.Log(_levelControl.CurrentLevel);
+            //Debug.Log(_levelControl.CurrentLevel);
         }
     }
 }
