@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using RunGame.Stack;
-using RunGame.Obstacle;
 using UnityEngine;
 
 namespace RunGame.Movement
@@ -12,7 +11,7 @@ namespace RunGame.Movement
         [Header("Call Class")]
         [SerializeField] MovementSettings _movementSettings;
         [SerializeField] StackControl _stackControl = new StackControl();
-        ObstacleMechanical _obstacleMechanial = new ObstacleMechanical();
+        
 
         [Header("Character Rigidbody")]
         [SerializeField] Rigidbody _rigidBody;
@@ -40,6 +39,7 @@ namespace RunGame.Movement
 
         [Header("New Timber Transform")]
         [SerializeField] Transform _timberObject;
+        public Transform TimberObject { get { return _timberObject; } }
 
 
         private void Start()
@@ -62,6 +62,7 @@ namespace RunGame.Movement
 
             if (_stackControl.TimberNumb > 0)
             {
+                _playerAnim.SetBool("Transport", true);
                 _rigidBody.useGravity = false; 
             }
             else
@@ -71,7 +72,7 @@ namespace RunGame.Movement
 
             if (_stackControl.TimberObject == null)
             {
-                _stackControl.TimberObject = _timberObject;
+                _stackControl.TimberObject = TimberObject.transform;
             }
             
             
@@ -99,15 +100,11 @@ namespace RunGame.Movement
             if (other.gameObject.CompareTag("Untagged"))
             {
                 _playerAnim.SetBool("Transport", true);
+                
                 _stackControl.TimperUp(other.gameObject, true);
                 
             }
 
-            if (other.gameObject.CompareTag("Obstacle"))
-            {
-                Debug.Log("Engel");
-                //_stackControl.CreatAndDeleteTimber();
-            }
         }
 
 
@@ -117,9 +114,11 @@ namespace RunGame.Movement
         void MovementRun()
         {
             if (Input.GetMouseButton(0))
-            {//_rigidBody.velocity = (Vector3.forward * _movementSettings.PlayerSpeed * Time.deltaTime);
+            {
+
                 transform.Translate(Vector3.forward * _movementSettings.PlayerSpeed * Time.deltaTime);
                 _playerAnim.SetBool("Run", true);
+                
             }
             else
             {
@@ -152,7 +151,7 @@ namespace RunGame.Movement
         /// </summary>
         public void CreatLadders()
         {
-            if(GroundControl == false)
+            if(GroundControl == false && Input.GetMouseButton(0))
             {
                 _stackControl.CreatLadders();
                 _creatLadders = true;

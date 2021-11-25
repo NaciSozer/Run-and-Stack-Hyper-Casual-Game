@@ -9,7 +9,7 @@ namespace RunGame.Scor
 {
     public class ScorControl : MonoBehaviour
     {
-        [SerializeField] StackControl _sctakControl = new StackControl();
+        [SerializeField] StackControl _stcakControl = new StackControl();
         [SerializeField] LevelControl _levelControl = new LevelControl();
          
         [SerializeField] Text _scorText;
@@ -18,7 +18,7 @@ namespace RunGame.Scor
 
         private void Update()
         {
-            _scorText.text = "Scor: " + _sctakControl.TimberNumb.ToString();
+            _scorText.text = "Scor: " + _stcakControl.TimberNumb.ToString();
             _panelScor.text = _scorText.text;
             _finishLevelText.text = "LEVEL " + (_levelControl.CurrentLevel + 1) + " COMPLETED";
 

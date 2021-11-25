@@ -7,7 +7,8 @@ public class FinishControl : MonoBehaviour
 {
     public void RestartGame()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("Level 0");
+        PlayerPrefs.DeleteAll();
     }
 
 }

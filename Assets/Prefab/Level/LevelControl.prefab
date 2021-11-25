@@ -51,3 +51,4 @@ MonoBehaviour:
   _currentLevel: 0
   _currentLevelText: {fileID: 0}
   _nextLevelText: {fileID: 0}
+  _winPanel: {fileID: 0}

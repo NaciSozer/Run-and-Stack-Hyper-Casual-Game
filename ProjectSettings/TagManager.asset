@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ladders
   - Obstacle
+  - Cone
   layers:
   - Default
   - TransparentFX

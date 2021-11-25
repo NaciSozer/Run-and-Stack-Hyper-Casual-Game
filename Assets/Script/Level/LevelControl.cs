@@ -73,7 +73,7 @@ namespace RunGame.LevelController
 
         private void Awake()
         {
-            PlayerPrefs.DeleteAll();
+            //PlayerPrefs.DeleteAll();
             Time.timeScale = 1;
 
 

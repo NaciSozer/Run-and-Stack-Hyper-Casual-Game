@@ -54,8 +54,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1374541427}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.59, z: 0.59}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 2.46, z: 0.707}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 5274805216801512749}
   m_RootOrder: 3
@@ -296,7 +296,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -3033667219593020291, guid: 2c005a7a63787ec438ff20dc531f0585, type: 3}
+  - {fileID: 2100000, guid: 9a524802d837f074984b9b8041181219, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1219,8 +1219,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.6384292, y: 4.269993, z: 1}
-  m_Center: {x: -0.096876964, y: 2.2226126, z: 0}
+  m_Size: {x: 2.068643, y: 4.269993, z: 1}
+  m_Center: {x: 0.08366102, y: 2.2226124, z: 0}
 --- !u!95 &5672677461352562436
 Animator:
   serializedVersion: 3
@@ -1273,6 +1273,8 @@ MonoBehaviour:
   _playerAnim: {fileID: 5672677461352562436}
   _groundControl: 0
   _creatLadders: 0
+  _transportAnim: 0
+  _timberObject: {fileID: 2342313633643155397, guid: 657fa3b6e9312b740984e9ed3c5d9b84, type: 3}
 --- !u!114 &919132148490229901
 MonoBehaviour:
   m_ObjectHideFlags: 0

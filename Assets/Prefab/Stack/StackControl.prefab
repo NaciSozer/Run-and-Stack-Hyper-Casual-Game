@@ -45,8 +45,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _timberPrefabList: []
   _timberPrefab: {fileID: 6632463018779271141, guid: b039fbbf36f88404ba12e4d55e59c4b5, type: 3}
+  _timberObject: {fileID: 2342313633643155397, guid: 657fa3b6e9312b740984e9ed3c5d9b84, type: 3}
   _timberParent: {fileID: 0}
-  _distanceBetweenObjects: 0.08
+  _distanceBetweenObjects: 0.35
   _ladderPrefab: {fileID: 6773672364342063890, guid: 4b08ebe6400f5d1499b1b06856e1d174, type: 3}
   _ladderCreatPos: {fileID: 0}
-  preNum: 0
+  _timberNumb: 0

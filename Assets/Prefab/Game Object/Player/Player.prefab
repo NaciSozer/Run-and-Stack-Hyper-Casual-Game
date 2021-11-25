@@ -733,7 +733,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3146186133774350002
 Transform:
   m_ObjectHideFlags: 0
@@ -833,6 +833,8 @@ MonoBehaviour:
   _playerAnim: {fileID: 3180604444124000760}
   _groundControl: 1
   _creatLadders: 0
+  _transportAnim: 0
+  _timberObject: {fileID: 0}
 --- !u!114 &1565289885
 MonoBehaviour:
   m_ObjectHideFlags: 0

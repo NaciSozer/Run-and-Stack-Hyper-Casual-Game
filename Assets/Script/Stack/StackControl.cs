@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using RunGame.Obstacle;
 using UnityEngine;
 
 namespace RunGame.Stack
@@ -10,7 +9,7 @@ namespace RunGame.Stack
         [Header("Stack Data")]
         [SerializeField] private List<GameObject> _timberPrefabList = null;
         [SerializeField] private GameObject _timberPrefab;
-        ObstacleMechanical _obs = new ObstacleMechanical();
+        
         public List<GameObject> TimberPrefab
         {
             get {return _timberPrefabList;}
@@ -39,7 +38,7 @@ namespace RunGame.Stack
             get { return _distanceBetweenObjects;}
         }
 
-
+       
 
 
         /// <summary>
@@ -68,14 +67,25 @@ namespace RunGame.Stack
         }
 
        
-
+       private void Update()
+        {
+            TimberNumb = TimberPrefab.Count;
+        }
+        
 
         public void TimperUp(GameObject _timberPrefab, bool down = true)
         {
-            
+            //int lastObecjt = TimberPrefab.LastIndexOf(_timberPrefab.GetComponent<Transform>().gameObject);
+
             TimberPrefab.Add(_timberPrefab);
-            _timberPrefab.GetComponent<BoxCollider>().enabled = false;
+
+            if (_timberPrefab.GetComponent<BoxCollider>())
+            {
+                _timberPrefab.GetComponent<BoxCollider>().enabled = false;
+            }
+            
             TimberNumb++;
+            
             _timberPrefab.transform.parent = TimberParent.transform;
 
 
@@ -85,8 +95,8 @@ namespace RunGame.Stack
 
             _timberPrefab.transform.localPosition = despos;
 
-
             TimberObject = _timberPrefab.transform;
+            
             
         }
 
@@ -104,14 +114,14 @@ namespace RunGame.Stack
                         desRot = Quaternion.Euler(0, 90, 90);
 
                         Instantiate(LaddersPrefab, _ladderCreatPos.position, desRot);
+
+                        
                     }
-                    
-                    TimberNumb--;
-                        TimberPrefab.RemoveAt(TimberPrefab.Count - 1);
 
-                        Destroy(TimberParent.GetComponent<Transform>().GetChild(TimberPrefab.Count).gameObject);
+                    DeleteTimber();
 
-                   
+
+
                     break;
                     }
                     
@@ -124,28 +134,13 @@ namespace RunGame.Stack
                 }
             
         }
-
-
-        public void CreatAndDeleteTimber()
+        public void DeleteTimber()
         {
-            if (_obs.NewRandomProscess() > -1)
-            {
-                Debug.Log("Timber++ " + _obs.NewRandomProscess());
-                for (int i = 0; i <= _obs.NewRandomProscess(); i++)
-                {
-                    TimperUp(TimberObject.gameObject, true);
-                }
+            TimberNumb--;
+           
+            TimberPrefab.RemoveAt(TimberPrefab.Count - 1);
 
-            }
-            else if (_obs.NewRandomProscess() < 0)
-            {
-                Debug.Log("Timber--" + _obs.NewRandomProscess());
-                for (int i = 0; i <= _obs.NewRandomProscess(); i++)
-                {
-                    CreatLadders(false);
-                }
-
-            }
+            Destroy(TimberParent.GetComponent<Transform>().GetChild(TimberPrefab.Count).gameObject);
         }
     }
 }

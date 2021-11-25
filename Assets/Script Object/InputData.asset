@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _horizontalInput: 0
   _mouseX: 0
-  _mouseSensitivity: 5
+  _mouseSensitivity: 2
